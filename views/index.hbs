@@ -1,2 +1,8 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
+<hr>
+<form action="/movies" method="GET">
+    <input type="text" id="search" placeholder="search a Movie" name="movie"></input>
+    <button id="search-button" href='/movies'>Search</button>
+</form>
+<a href="/movies">Movies</a>
