@@ -1,8 +1,14 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 <hr>
-<form action="/movies" method="GET">
-    <input type="text" id="search" placeholder="search a Movie" name="movie"></input>
+{{!-- <form action="/movies" method="GET">
+    <input type="text" id="search" placeholder="Search a specific Movie or Serie" name="movie"></input>
     <button id="search-button" href='/movies'>Search</button>
+</form> --}}
+
+<form action="/results" method="GET">
+    <input type="text" id="search" placeholder="search" name="general"></input>
+    <button id="search-button" href='/results'>Search</button>
 </form>
+
 <a href="/movies">Movies</a>

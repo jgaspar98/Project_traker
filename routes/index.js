@@ -6,8 +6,5 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
-router.post('/movies', (req, res, next) => {
-  
-})
 
 module.exports = router;
