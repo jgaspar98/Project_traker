@@ -12,9 +12,6 @@ const session      = require('express-session');
 const MongoStore = require ('connect-mongo')(session);
 
 
-// require IMDB api
-
-
 mongoose
   .connect('mongodb://localhost/project-traker', {useNewUrlParser: true})
   .then(x => {
