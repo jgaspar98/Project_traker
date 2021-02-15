@@ -1,14 +1,17 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 <hr>
-{{!-- <form action="/movies" method="GET">
-    <input type="text" id="search" placeholder="Search a specific Movie or Serie" name="movie"></input>
-    <button id="search-button" href='/movies'>Search</button>
-</form> --}}
-
+{{#if user}}
+    <h2>Hello {{user.username}}</h2>
+    <form action="/logout" method="POST">
+        <button type="submit"> Logout</button>
+    </form>
+{{/if}}
 <form action="/results" method="GET">
     <input type="text" id="search" placeholder="search" name="general"></input>
     <button id="search-button" href='/results'>Search</button>
 </form>
-
-<a href="/movies">Movies</a>
+{{#unless user}}
+    <a href="/signup">Signup</a>
+    <a href="/login">Login</a>
+{{/unless}}

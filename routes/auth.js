@@ -2,6 +2,7 @@ const express = require('express');
 const router  = express.Router();
 const User = require('../models/User.model');
 const bcrypt = require('bcryptjs');
+const List = require('../models/Lists.model')
 
 router.get('/login', (req,res) => {
   res.render('auth/login');
@@ -75,8 +76,14 @@ router.post('/signup', (req, res) => {
         username,
         email,
         password: hashPassword
-      }).then(() => {
-        res.redirect('/');
+      }).then((user) => {
+        // Automatically creates a new user a WatchList
+        List.create({ name: 'WatchList', user: user._id }).then(() => {
+          res.redirect('/');
+        })
+          .catch(e => {
+          console.log(e)
+        })
       }).catch((error) => {
         //.code is mongoose validation error
         if (error.code === 11000) {
