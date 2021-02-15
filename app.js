@@ -8,6 +8,8 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path = require('path');
+const session      = require('express-session');
+const MongoStore = require ('connect-mongo')(session);
 
 
 // require IMDB api
@@ -52,7 +54,22 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 // default value for title local
 app.locals.title = 'usualpocorn';
 
-
+//Express Session Setup
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    cookie: { 
+      sameSite: true,
+      httpOnly: true,
+      maxAge: 60000 
+    },
+    rolling: true,
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 60 * 60 * 24 //60sec * 60min * 24h => 1day
+    })
+  })
+);
 
 const index = require('./routes/index');
 app.use('/', index);
@@ -60,5 +77,7 @@ app.use('/', index);
 const movies = require('./routes/movies');
 app.use('/', movies);
 
+const auth = require('./routes/auth');
+app.use('/', auth);
 
 module.exports = app;
