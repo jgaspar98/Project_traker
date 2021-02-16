@@ -1,16 +1,24 @@
-const { response } = require('express');
 const express = require('express');
 const router = express.Router();
 const List = require('../models/Lists.model')
-
-
 const imdb = require('imdb-api');
+
+router.post('/movies/add-list', (req, res) => {
+    const { title, poster } = req.body;
+    console.log(title, poster); // Reconhece o title e o poster 
+    List.findOneAndUpdate({ name: 'WatchedList', user: req.session.currentUser }, { $push: { movies: { title, poster } } })
+        .then(() => {
+            res.redirect('/')
+        }).catch((err) => { console.log(err) });
+});
+
 //* Route to add the Movie to our WatchList
 router.post('/movies/add-list', (req, res) => {
     // Object Deconstration
     const { title, poster } = req.body;
     // Creates a WatchList to the current user and push to an array of objects
-    List.findOneAndUpdate({ name: 'WatchList', user: req.session.currentUser }, { $push: { movies: { title, poster } } }).then(() => {
+    List.findOneAndUpdate({ name: 'WatchList', user: req.session.currentUser }, { $push: { movies: { title, poster } } })
+        .then(() => {
         res.redirect('/') //TODO: redirect to user wathlist page;
     }).catch((err) => {console.log(err)});
 });

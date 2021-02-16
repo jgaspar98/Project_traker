@@ -78,8 +78,10 @@ router.post('/signup', (req, res) => {
         password: hashPassword
       }).then((user) => {
         // Automatically creates a new user a WatchList
-        List.create({ name: 'WatchList', user: user._id }).then(() => {
-          res.redirect('/');
+        List.create({ name: 'WatchList', user: user._id }).then((list) => {
+          List.create({ name: 'WatchedList', user: list.user }).then(() => {
+            res.redirect('/');
+          })
         })
           .catch(e => {
           console.log(e)

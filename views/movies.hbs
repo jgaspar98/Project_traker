@@ -11,4 +11,10 @@
    <input type="hidden" value="{{movies.title}}" name="title">
    <input type="hidden" value="{{movies.poster}}" name="poster">
    <button type="submit">Add to WatchList</button>
-</form>    
+</form> 
+
+<form  action="/movies/watched-list" method="POST">
+   <input type="hidden" value="{{movies.title}}" name="title">
+   <input type="hidden" value="{{movies.poster}}" name="poster">
+   <button type="submit">Add to WatchedList</button>
+</form>  

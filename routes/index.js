@@ -3,7 +3,7 @@ const router  = express.Router();
 
 /* GET home page */
 router.get('/', (req, res, next) => {
-                      //? Needs this part vv to get the user logged in
+ //? Needs this part to get the user logged in vv
   res.render('index', {user: req.session.currentUser});
 });
 
