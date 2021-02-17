@@ -57,7 +57,6 @@ router.get('/results', (req, res) => {
     let searchFor = req.query.general;
     // imdb Api documentation to search for a  non specific film, returning a list of films
     imdb.search({ name: searchFor }, { apiKey: process.env.API_KEY }).then((response) => {
-        console.log(response.results);
         res.render('results', { results: response.results });
     }).catch(err => {
         console.log(err);

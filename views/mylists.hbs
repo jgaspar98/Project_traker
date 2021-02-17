@@ -3,12 +3,12 @@
 {{#each lists}}
   {{name}}
   {{#each movies}}
-  <h3>{{title}}</h3>
-  <h3><a href="/movies/{{id}}">{{title}}</a>
-   <h3><a href="/movies/{{id}}/edit">Edit</a>
-  <form action="/movies/{{id}}/delete" method="POST">
+  <h3><a href="/movies/{{imdbid}}">{{title}}</a></h3>
+  <img src="{{poster}}"
+   <form action="/movies/{{imdbid}}/delete" method="POST">
   <button type="submit"> Delete</button>
     </form>
-  </h3>
     {{/each}}
   {{/each}}
+
+  <a href="/">Back to the main page</a>
