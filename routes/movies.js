@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const List = require('../models/Lists.model')
+const Review = require('../models/Review.model')
 const imdb = require('imdb-api');
 
 router.post('/movies/add-list', (req, res) => {
@@ -27,12 +28,26 @@ router.post('/movies/add-list', (req, res) => {
 router.get('/movies/:id', (req, res) => {
     // Gets the id from the url
     let id = req.params.id;
-    // imdb Api documentation to search for  a specific movie
+    // imdb Api documentation to search for a specific movie
     imdb.get({ id: id }, { apiKey: process.env.API_KEY, timeout: 30000 }).then((response) => {
-        console.log(response);
-        res.render('movies', { movies: response });
+        // find the review that the user made and displays it
+        Review.find({ movieId: response.imdbid }).populate('user').then((reviews) => {
+            res.render('movies', { movies: response, reviews: reviews});
+        });
     }).catch(err => {
         console.log(err);
+    });
+});
+
+router.post('/reviews/:id/add', (req, res) => {
+    // gets the movie id
+    let id = req.params.id;
+    // gets what the user writes
+    const { review } = req.body;
+    //gets the user thats logged in
+    const userId = req.session.currentUser;
+    Review.create({ movieId: id, review, user: userId }).then(() => {
+        res.redirect(`/movies/${id}`);
     });
 });
 

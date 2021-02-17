@@ -17,4 +17,15 @@
    <input type="hidden" value="{{movies.title}}" name="title">
    <input type="hidden" value="{{movies.poster}}" name="poster">
    <button type="submit">Add to WatchedList</button>
-</form>  
+</form> 
+
+{{#each reviews}}
+      <p>{{review}}</p>
+      <p>{{user.username}}</p>
+{{/each}}
+
+
+<form action="/reviews/{{movies.imdbid}}/add" method="POST">
+<textarea name="review"></textarea>
+<button type="submit">Add review</button>
+</form>
