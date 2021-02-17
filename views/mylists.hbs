@@ -1,14 +1,18 @@
-<h1>My Lists</h1>
-
+<h1 class="mylist-title">My Lists</h1>
+<div class="row">
 {{#each lists}}
-  {{name}}
+ <h2 class="list-name">{{name}}</h2> 
   {{#each movies}}
-  <h3><a href="/movies/{{imdbid}}">{{title}}</a></h3>
-  <img src="{{poster}}"
-   <form action="/movies/{{imdbid}}/delete" method="POST">
-  <button type="submit"> Delete</button>
+  <div class="card" style="width: 18rem;">
+  <img src="{{poster}}" class="card-img-top" alt="movie poster">
+  <div class="card-body">
+    <h5 class="card-title">{{title}}</h5>
+    <form action="/movies/{{imdbid}}/delete" method="POST">
+       <button type="submit" class="btn btn-danger"> Delete</button>
     </form>
+  </div>
+</div>   
     {{/each}}
   {{/each}}
-
+</div>
   <a href="/">Back to the main page</a>
