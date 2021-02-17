@@ -65,6 +65,10 @@ router.get('/results', (req, res) => {
 });
 
 router.get('/mylists', (req, res) => {
-    res.render('mylists');
+    const userId = req.session.currentUser; 
+    List.find({user: userId}).then((allListsFromDB) => {
+        console.log(allListsFromDB)
+        res.render('mylists', { lists:allListsFromDB});
+    })
 })
 module.exports = router;
