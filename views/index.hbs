@@ -1,18 +1,58 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-<hr>
-{{#if user}}
-    <h2>Hello {{user.username}}</h2>
-    <form action="/logout" method="POST">
-        <button type="submit"> Logout</button>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="images/popcorn.png" alt="" width="50" height="50">
+      {{title}}
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <class class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+        {{#unless user}}
+            <a class="nav-link" href="/signup">Signup</a>
+           <li> <a class="nav-link" href="/login">Login</a></li>
+        {{/unless}}
+        </li>
+        <li class="nav-item logout">
+        {{#if user}}
+            <form  action="/logout" method="POST">
+                <button id="logout-btn"class="btn btn-outline-danger" type="submit"> Logout</button>
+            </form>
+        {{/if}}
+        </li>
+        </class>
+      </ul>
+    <form class="d-flex" action="/results" method="GET">
+        <input class="form-control me-2" type="text" id="search" placeholder="search" name="general"></input>
+        <button class="btn btn-outline-warning" id="search-button" href='/results'>Search</button>
     </form>
-    <a href="/mylists">My lists</a>
+    </div>
+  </div>
+</nav>
+
+<h1 class="greatings">Welcome to {{title}}</h1>
+<p class="introduction">Create an account and keep track of your favorite movies and series!</p>
+
+{{#if user}}
+    <h1 class="greatings-user">Hello {{user.username}}</h1>
+    
+   <button type="button" id="mylist-btn" class="btn btn-outline-light"><a href="/mylists">My lists</a></button> 
 {{/if}}
-<form action="/results" method="GET">
-    <input type="text" id="search" placeholder="search" name="general"></input>
-    <button id="search-button" href='/results'>Search</button>
-</form>
-{{#unless user}}
-    <a href="/signup">Signup</a>
-    <a href="/login">Login</a>
-{{/unless}}
+
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="images/inception_movie_poster_banner.jpg" class="d-block w-80" alt="Inception poster">
+    </div>
+    <div class="carousel-item">
+      <img src="images/Life-Banner.jpg" class="d-block w-80" alt="Life poster">
+    </div>
+    <div class="carousel-item">
+      <img src="images/the-avengers-movie-poster-banners.jpg" class="d-block w-80" alt="Avengers poster">
+    </div>
+  </div>
+</div>
+
+

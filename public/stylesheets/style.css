@@ -1,8 +1,82 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #0a0a0a; }
+
+.greatings {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  font-size: 5rem; }
+
+.introduction {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  font-size: 2rem; }
+
+.posters {
+  padding: 1rem; }
+
+.search-results {
+  color: white; }
+
+.card-title {
+  color: white; }
+
+.card-img {
+  padding: 1rem; }
+
+.card {
+  margin-right: 4rem;
+  margin-bottom: 3rem;
+  background-color: #252424; }
+
+.carousel-inner img {
+  margin: auto;
+  margin-top: 4rem; }
 
 a {
   color: #00B7FF; }
+
+#mylist-btn {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center; }
+
+.greatings-user {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: white; }
+
+#logout-btn {
+  margin-left: 76rem; }
+
+.bg-light {
+  background-color: #1a1919 !important; }
+
+.navbar-brand {
+  color: white !important; }
+
+.nav-link {
+  color: white !important; }
+
+.nav-item {
+  color: white !important; }
+
+.btn-outline-success {
+  color: red;
+  border-color: red; }
 
 /*# sourceMappingURL=style.css.map */

@@ -4,16 +4,16 @@ const List = require('../models/Lists.model')
 const Review = require('../models/Review.model')
 const imdb = require('imdb-api');
 
-router.post('/movies/add-list', (req, res) => {
+router.post('/movies/add', (req, res) => {
     const { title, poster } = req.body;
-    console.log(title, poster); // Reconhece o title e o poster 
+    // Reconhece o title e o poster 
     List.findOneAndUpdate({ name: 'WatchedList', user: req.session.currentUser }, { $push: { movies: { title, poster } } })
         .then(() => {
             res.redirect('/')
         }).catch((err) => { console.log(err) });
 });
 
-//* Route to add the Movie to our WatchList
+// //* Route to add the Movie to our WatchList
 router.post('/movies/add-list', (req, res) => {
     // Object Deconstration
     const { title, poster } = req.body;

@@ -15,7 +15,6 @@ const MongoStore = require ('connect-mongo')(session);
 //Make handlebars helpers available on our views
 hbs.registerHelper(helpers());
 
-
 mongoose
   .connect(process.env.MONGODB_URI, {useNewUrlParser: true,  useUnifiedTopology: true })
   .then(x => {

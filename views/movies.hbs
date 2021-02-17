@@ -7,16 +7,16 @@
     <p>Rating:{{movies.rating}}</p>
     <p>Genre{{movies.genres}}</p>
 
-<form  action="/movies/add-list" method="POST">
+<form  action="/movies/add" method="POST">
    <input type="hidden" value="{{movies.title}}" name="title">
    <input type="hidden" value="{{movies.poster}}" name="poster">
-   <button type="submit">Add to WatchList</button>
+   <button type="submit">Add to WatchedList</button>
 </form> 
 
 <form  action="/movies/add-list" method="POST">
    <input type="hidden" value="{{movies.title}}" name="title">
    <input type="hidden" value="{{movies.poster}}" name="poster">
-   <button type="submit">Add to WatchedList</button>
+   <button type="submit">Add to WatchList</button>
 </form> 
 
 {{#each reviews}}

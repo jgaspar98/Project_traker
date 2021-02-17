@@ -1,8 +1,13 @@
-<h1>Search Results</h1>
+<h1 class="search-results">Search Results</h1>
 <hr>
+<div class="row">
 {{#each results}}
-      <a href="/movies/{{imdbid}}"><h2>{{title}}</h2> </a> 
-        <h3>{{type}}</h3>
-        <img src={{poster}} alt={{title}}>
-        <hr>
+  <div class="card" style="width: 18rem;">
+    <img  src={{poster}} class="posters card-img-top" alt={{title}}>
+    <div class="card-body">
+      <h5 class="card-title">{{title}}</h5>
+      <a href="/movies/{{imdbid}}" class="btn btn-primary">More info</a>
+    </div>
+  </div>
 {{/each}}
+</div>
