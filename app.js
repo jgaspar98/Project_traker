@@ -17,8 +17,8 @@ hbs.registerHelper(helpers());
 
 
 mongoose
-  .connect('mongodb://localhost/project-traker', {useNewUrlParser: true})
-  .then(x => {
+.connect(process.env.MONGODB_URI, {useNewUrlParser: true,  useUnifiedTopology: true })  
+.then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
   .catch(err => {
@@ -37,7 +37,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Express View engine setup
-
 app.use(require('node-sass-middleware')({
   src:  path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),

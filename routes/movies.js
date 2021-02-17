@@ -19,7 +19,7 @@ router.post('/movies/add-list', (req, res) => {
     // Creates a WatchList to the current user and push to an array of objects
     List.findOneAndUpdate({ name: 'WatchList', user: req.session.currentUser }, { $push: { movies: { title, poster } } })
         .then(() => {
-        res.redirect('/') //TODO: redirect to user wathlist page;
+        res.redirect('/') //TODO: redirect to user watchlist page;
     }).catch((err) => {console.log(err)});
 });
 
@@ -49,5 +49,7 @@ router.get('/results', (req, res) => {
     });
 });
 
-
+router.get('/mylists', (req, res) => {
+    res.render('mylists');
+})
 module.exports = router;
