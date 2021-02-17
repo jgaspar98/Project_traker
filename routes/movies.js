@@ -4,7 +4,7 @@ const List = require('../models/Lists.model')
 const Review = require('../models/Review.model')
 const imdb = require('imdb-api');
 
-router.post('/movies/add-list', (req, res) => {
+router.post('/movies/add', (req, res) => {
     const { title, poster } = req.body;
     console.log(title, poster); // Reconhece o title e o poster 
     List.findOneAndUpdate({ name: 'WatchedList', user: req.session.currentUser }, { $push: { movies: { title, poster } } })
@@ -65,6 +65,10 @@ router.get('/results', (req, res) => {
 });
 
 router.get('/mylists', (req, res) => {
-    res.render('mylists');
+    const userId = req.session.currentUser; 
+    List.find({user: userId}).then((allListsFromDB) => {
+        console.log(allListsFromDB)
+        res.render('mylists', { lists:allListsFromDB});
+    })
 })
 module.exports = router;
