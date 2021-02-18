@@ -31,8 +31,10 @@ router.get('/movies/:id', (req, res) => {
     // imdb Api documentation to search for a specific movie
     imdb.get({ id: id }, { apiKey: process.env.API_KEY, timeout: 30000 }).then((response) => {
         // find the review that the user made and displays it
+        console.log(response);
+        
         Review.find({ movieId: response.imdbid }).populate('user').then((reviews) => {
-            res.render('movies', { movies: response, reviews: reviews});
+            res.render('movies', { movies: response, reviews: reviews, user: req.session.currentUser } );
         });
     }).catch(err => {
         console.log(err);
@@ -63,6 +65,8 @@ router.get('/results', (req, res) => {
     });
 });
 
+
+
 router.get('/mylists', (req, res) => {
     const userId = req.session.currentUser; 
     List.find({user: userId}).then((allListsFromDB) => {
@@ -78,7 +82,17 @@ router.post('/mylists/add', (req, res) => {
     List.create({name, user: userId})
     .then(() => {
       res.redirect('/mylists');
-  });
+    });
 });
+
+router.post('/mylists/:listId/list/:movieId/delete', (req, res) => {
+    const listId = req.params.listId;
+    const movieId = req.params.movieId
+    List.findByIdAndUpdate(listId,{$pull:{movies:{_id: movieId}}}).then(() => {
+        res.redirect('/mylists');
+    }).catch(e => {
+        console.log(e)
+    });
+}); 
 
 module.exports = router;

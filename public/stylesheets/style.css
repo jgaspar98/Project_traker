@@ -48,15 +48,24 @@ body {
   margin: auto;
   margin-top: 4rem; }
 
-a {
-  color: #00B7FF; }
+.mylist-redirect {
+  text-decoration: none;
+  color: white; }
+
+.form-control {
+  width: 30%; }
+
+.redirect-signin {
+  text-decoration: none; }
 
 #mylist-btn {
   margin-top: 5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center; }
+  text-align: center;
+  margin-left: 47%;
+  margin-right: 48%; }
 
 .greatings-user {
   margin-top: 5rem;
@@ -66,8 +75,29 @@ a {
   text-align: center;
   color: white; }
 
-#logout-btn {
-  margin-left: 76rem; }
+.sign-up {
+  color: white;
+  margin-bottom: 2rem; }
+
+.search-movie {
+  width: 68%; }
+
+.login-title {
+  color: white;
+  margin-bottom: 2rem; }
+
+.redirect-signup {
+  color: white;
+  margin-left: 3rem; }
+
+.col-form-label {
+  width: 6rem; }
+
+.login-form {
+  margin-left: 3rem;
+  font-size: 1rem;
+  color: white;
+  margin-bottom: 2rem; }
 
 .bg-light {
   background-color: #1a1919 !important; }
@@ -84,5 +114,45 @@ a {
 .btn-outline-success {
   color: red;
   border-color: red; }
+
+.movie-title {
+  text-align: center;
+  color: white;
+  font-size: 4rem; }
+
+.paragraph {
+  border: 10rem;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  color: white;
+  font-size: 1rem;
+  line-height: 1.4rem; }
+
+p {
+  color: white; }
+
+.imdb-logo {
+  width: 4rem;
+  height: 2rem;
+  border-radius: 20%; }
+
+.review-session {
+  width: 23rem; }
+
+.plot {
+  margin-right: 20%;
+  margin-left: 20%; }
+
+.whatched {
+  margin-bottom: 1rem;
+  width: 11rem; }
+
+.whatch {
+  width: 11rem; }
+
+.lists-btn {
+  width: 23rem;
+  margin: auto; }
 
 /*# sourceMappingURL=style.css.map */

@@ -24,10 +24,10 @@
         </li>
         </class>
       </ul>
-    <form class="d-flex" action="/results" method="GET">
-        <input class="form-control me-2" type="text" id="search" placeholder="search" name="general"></input>
+      <form class="d-flex" action="/results" method="GET">
+        <input class="search-movie form-control me-2" type="text" id="search" placeholder="search" name="general"></input>
         <button class="btn btn-outline-warning" id="search-button" href='/results'>Search</button>
-    </form>
+      </form>
     </div>
   </div>
 </nav>
@@ -38,7 +38,7 @@
 {{#if user}}
     <h1 class="greatings-user">Hello {{user.username}}</h1>
     
-   <button type="button" id="mylist-btn" class="btn btn-outline-light"><a href="/mylists">My lists</a></button> 
+   <button type="button" id="mylist-btn" class="btn mylist-redirect btn-outline-dark"><a href="/mylists">My lists</a></button> 
 {{/if}}
 
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
