@@ -1,20 +1,23 @@
-<h2>Login</h2>
-<form action="/login" method="POST">
-<label>
-Username
-</label>
-<input type="text" name="username" required>
+<h2 class="login-title">Login</h2>
 
-<label>
-  Password
-</label>
-<input type="password" name="password" required>
-
-<button type="submit" href="/">Log in</button>
+<form class="login-form" action="/login" method="POST">
+  <div class="row mb-3">
+    <label for="inputEmail3" class="username col-sm-2 col-form-label">Username</label>
+    <div class="col-sm-10">
+      <input type="text" name="username" class="form-control" id="inputEmail3" required>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" name="password" class="form-control" id="inputPassword3"  required>
+    </div>
+  </div>
+  <button type="submit" href="/" class="btn btn-primary">Log in</button>
 </form>
 
 {{#if errorMessage}}
   <div>{{errorMessage}}</div>
 {{/if}}
 
-<p>Dont have an account? Sign up <a href="/signup">here</a></p>
+<p class="redirect-signup">Dont have an account?<a class="redirect-signin" href="/signup">Sign up</a></p>
