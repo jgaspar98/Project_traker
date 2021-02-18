@@ -15,4 +15,15 @@
     {{/each}}
   {{/each}}
 </div>
+
+<form action="/mylists/add" method="POST">
+<label>🍿 Create New List</label>
+<input type="text" name="name">
+{{!-- <p>
+<label>Content Description</label>
+<textarea name="description" cols="30"></textarea> --}}
+<p>
+<button type="submit">Create</button>
+</form>
+<p>
   <a href="/">Back to the main page</a>

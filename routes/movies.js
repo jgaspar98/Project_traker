@@ -68,6 +68,17 @@ router.get('/mylists', (req, res) => {
     List.find({user: userId}).then((allListsFromDB) => {
         console.log(allListsFromDB)
         res.render('mylists', { lists:allListsFromDB});
-    })
-})
+    });
+});
+
+router.post('/mylists/add', (req, res) => {
+    const { name } = req.body; 
+    const userId = req.session.currentUser; 
+    console.log('name', name);
+    List.create({name, user: userId})
+    .then(() => {
+      res.redirect('/mylists');
+  });
+});
+
 module.exports = router;
