@@ -65,7 +65,7 @@ body {
   justify-content: center;
   text-align: center;
   margin-left: 47%;
-  margin-right: 48%; }
+  margin-right: 48%; width: 5rem; }
 
 .greatings-user {
   margin-top: 5rem;
