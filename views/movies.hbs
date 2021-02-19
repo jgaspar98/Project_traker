@@ -15,21 +15,21 @@
     <p>If you want to leave your review or add this movie to your WatchList <a href="/login">login</a></p>
 </div>
 
+
+
 {{#if user}}
 <div class="row lists-btn">
    <div class="col whatched">
-      <form class="whatched"  action="/movies/add" method="POST">
-         <input type="hidden" value="{{movies.title}}" name="title">
-         <input type="hidden" value="{{movies.poster}}" name="poster">
-         <button type="submit" class="btn btn-secondary">Add to WatchedList</button>
-      </form> 
-   </div>
-   <div class="col whatch">
-      <form class="whatch" action="/movies/add-list" method="POST">
-         <input type="hidden" value="{{movies.title}}" name="title">
-         <input type="hidden" value="{{movies.poster}}" name="poster">
-         <button type="submit" class="btn btn-secondary">Add to WatchList</button>
-      </form> 
+      <form action="/movies/{{movies.imdbid}}/lists/add" method="POST">
+   <label>Add to List</label>
+    <select name="list">
+      <option>Choose List</option>
+         {{#each lists}}
+            <option value={{id}}>{{name}}</option>
+         {{/each}}
+      </select>
+   <button type="submit">Add</button>
+</form>
    </div>
 </div>
 {{/if}}

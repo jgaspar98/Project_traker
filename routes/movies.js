@@ -4,25 +4,20 @@ const List = require('../models/Lists.model')
 const Review = require('../models/Review.model')
 const imdb = require('imdb-api');
 
-router.post('/movies/add', (req, res) => {
-    const { title, poster } = req.body;
-    // Reconhece o title e o poster 
-    List.findOneAndUpdate({ name: 'WatchedList', user: req.session.currentUser }, { $push: { movies: { title, poster } } })
-        .then(() => {
-            res.redirect('/')
-        }).catch((err) => { console.log(err) });
+
+
+//* Enables the user to choose what list to get
+router.post('/movies/:movieId/lists/add', (req, res) => {
+    const { list } = req.body;
+    const movieId = req.params.movieId;
+    imdb.get({ id: movieId }, { apiKey: process.env.API_KEY, timeout: 30000 }).then((response) => {
+        List.findByIdAndUpdate(list, { $push: { movies: { title: response.title, poster: response.poster} } }).then(() => {
+            res.redirect('/mylists')
+        });
+    });
 });
 
-// //* Route to add the Movie to our WatchList
-router.post('/movies/add-list', (req, res) => {
-    // Object Deconstration
-    const { title, poster } = req.body;
-    // Creates a WatchList to the current user and push to an array of objects
-    List.findOneAndUpdate({ name: 'WatchList', user: req.session.currentUser }, { $push: { movies: { title, poster } } })
-        .then(() => {
-        res.redirect('/') //TODO: redirect to user watchlist page;
-    }).catch((err) => {console.log(err)});
-});
+
 
 //* Route to get a movie when user clicks on title
 router.get('/movies/:id', (req, res) => {
@@ -31,10 +26,15 @@ router.get('/movies/:id', (req, res) => {
     // imdb Api documentation to search for a specific movie
     imdb.get({ id: id }, { apiKey: process.env.API_KEY, timeout: 30000 }).then((response) => {
         // find the review that the user made and displays it
-        console.log(response);
-        
         Review.find({ movieId: response.imdbid }).populate('user').then((reviews) => {
-            res.render('movies', { movies: response, reviews: reviews, user: req.session.currentUser } );
+            List.find({ user : req.session.currentUser._id}).then((listsFromDB) => { 
+                res.render('movies', {
+                    movies: response, reviews: reviews,
+                    user: req.session.currentUser,
+                    lists: listsFromDB
+                });
+            })
+         
         });
     }).catch(err => {
         console.log(err);
@@ -64,8 +64,6 @@ router.get('/results', (req, res) => {
         console.log(err);
     });
 });
-
-
 
 router.get('/mylists', (req, res) => {
     const userId = req.session.currentUser; 
