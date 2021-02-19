@@ -21,14 +21,14 @@
 <div class="row lists-btn">
    <div class="col whatched">
       <form action="/movies/{{movies.imdbid}}/lists/add" method="POST">
-   <label>Add to List</label>
+   <label class="add-list">Add to List : </label>
     <select name="list">
       <option>Choose List</option>
          {{#each lists}}
             <option value={{id}}>{{name}}</option>
          {{/each}}
       </select>
-   <button type="submit">Add</button>
+   <button type="submit" class="btn btn-secondary">Add</button>
 </form>
    </div>
 </div>

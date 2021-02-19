@@ -51,7 +51,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 // default value for title local
-app.locals.title = 'usualpopcorn';
+app.locals.title = ' M U V I E';
 
 //Express Session Setup
 app.use(

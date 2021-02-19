@@ -6,7 +6,11 @@
     <img  src={{poster}} class="posters card-img-top" alt={{title}}>
     <div class="card-body">
       <h5 class="card-title">{{title}}</h5>
+      {{#if ../user}}
       <a href="/movies/{{imdbid}}" class="btn btn-primary">More info</a>
+      {{else}}
+      <a href="/signup">Register to see more info</a>
+      {{/if}}
     </div>
   </div>
 {{/each}}

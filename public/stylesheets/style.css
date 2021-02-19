@@ -65,7 +65,7 @@ body {
   justify-content: center;
   text-align: center;
   margin-left: 47%;
-  margin-right: 48%; width: 5rem; }
+  margin-right: 48%; }
 
 .greatings-user {
   margin-top: 5rem;
@@ -131,6 +131,14 @@ body {
 
 .btn-create {
   width: 5rem; }
+
+select {
+  word-wrap: normal;
+  height: 2rem; }
+
+.add-list {
+  color: white;
+  font-size: 1rem; }
 
 .input-create {
   width: 13.333333%; }
